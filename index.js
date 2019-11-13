@@ -75,9 +75,9 @@ mongoose.connect('mongodb+srv://dev:DEV123!@cluster0-3tbei.mongodb.net/sportists
               street : "Narodni Heroi", 
               number : "12", 
                suite : "20", 
-                city : "Skopje", 
+                city : "Gevgelija", 
              country : "Makedonija", 
-                 zip : "1000", 
+                 zip : "1480", 
                  gps : {
                  lon : 15.6, 
                  lat : 15.1
@@ -248,7 +248,7 @@ club_engagement: {
   player_number: "27",
        position: "Small Forward",
       },
-         status: "Active",
+         status: "Injured",
        transfer: {
        transfers: true,
 number_of_transfers: "2",
@@ -297,11 +297,11 @@ club_engagement: {
   player_number: "50",
        position: "Shooting Guard",
       },
-         status: "Injured",
+         status: "Active",
        transfer: {
        transfers: true,
 number_of_transfers: "3",
-          clubs: ["KK Kumanovo Kumanovo", "KK MZT Skopje", "KK Vardar Skopje"]
+          clubs: [" KK Kumanovo Kumanovo", " KK MZT Skopje", " KK Vardar Skopje"]
       },    
        _created: new Date(),
       _modified: new Date()
@@ -311,7 +311,7 @@ number_of_transfers: "3",
   
 
 
-// var bps = [bpTwo, bpThree, bpFour]
+// var bps = [bpOne, bpTwo, bpThree, bpFour, bpFive]
 
 // bps.forEach((g, i) => {
 //     g.save(err => {
@@ -333,16 +333,17 @@ number_of_transfers: "3",
 
     
     // //  1parameter query!,  second calback
-    // Basketball_player.find({ "location.city": "Skopje", "club.name": "KK Vardar", "club.city":"Skopje"}, (err, data)=>{
-    //  if(err){
-    //      console.log('could not read data');
-    //      return;
-    //  }
-    //  console.log(data);
-    //  data.forEach((pl, i)=>{
-    //      console.log(pl.first_name, ' ', pl.transfer.clubs, ' ', pl.club_engagement.position);
-    //  })
-    // });
+Basketball_player.find({ /*"location.city": "Skopje",*/ "club.name":"KK Vardar"}, (err, data)=>{
+     if(err){
+         console.log('could not read data');
+         return;
+     }
+     console.log(data);
+     data.forEach((pl, i)=>{
+         console.log("Name: "+pl.first_name,' ', "City of Origin: " +pl.location.city,'',"Transfer Clubs: "+pl.transfer.clubs,' ',
+        "Current Club and City: "+ pl.club.name, pl.club.city,',', "Player Position: "+pl.club_engagement.position);
+     })
+    });
 
     // Basketball_player.find({ "location.city": "Skopje", "club.city":"Skopje"}, (err, data)=>{
     //   if(err){
@@ -351,9 +352,12 @@ number_of_transfers: "3",
     //   }
     //   console.log(data);
     //   data.forEach((pl, i)=>{
-    //       console.log(pl.first_name, ' ', pl.transfer.clubs, ' ', pl.club_engagement.position, ' ',pl.status);
+    //       console.log("First Name: " + pl.first_name,',', " Transfer Clubs: " + pl.transfer.clubs,',',
+    //       "Player Position: " + pl.club_engagement.position,',', "Player Status: " + pl.status);
     //   })
     //  });
+
+    
 
     // Basketball_player.find({ "location.city": "Skopje"}, (err, data)=>{
     //   if(err){
@@ -362,28 +366,19 @@ number_of_transfers: "3",
     //   }
     //   console.log(data);
     //   data.forEach((pl, i)=>{
-    //       console.log(pl.first_name, ' ', pl.club.name, ' ', pl.club.number_of_titles);
+    //       console.log("First Name: " + pl.first_name, ' ', "Club: " + pl.club.name, ' ',
+    //       " Number of Club Titles: " +  pl.club.number_of_titles);
     //   })
     //  });
 
-    // Basketball_player.find({ "location.city": "Skopje"}, (err, data)=>{
+    // Basketball_player.find({ "last_name": "Cvelevski"}, (err, data)=>{
     //   if(err){
     //       console.log('could not read data');
     //       return;
     //   }
-    //   console.log(data);
+    //   // console.log(data);
     //   data.forEach((pl, i)=>{
-    //       console.log(pl.first_name, ' ', pl.club.name, ' ', pl.club.number_of_titles);
+    //       console.log("Name: " + pl.first_name, ' ', " Club: " + pl.club.name, ' ',
+    //        "Club Transfers: " + pl.transfer.clubs[1,2]);
     //   })
     //  });
-
-    Basketball_player.find({ "last_name": "Cvelevski"}, (err, data)=>{
-      if(err){
-          console.log('could not read data');
-          return;
-      }
-      // console.log(data);
-      data.forEach((pl, i)=>{
-          console.log(pl.first_name, ' ', pl.club.name, ' ', pl.transfer.clubs[1]);
-      })
-     });
