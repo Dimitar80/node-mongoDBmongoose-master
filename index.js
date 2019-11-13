@@ -1,11 +1,12 @@
 const express = require('express');
+const bodyParser = require('body-parser')
 
 const DBConn = require('./db/connection');
+const filmovi = require('./handlers/filmovi');
 DBConn.init();
 
-const filmovi = require('./handlers/filmovi');
-
 const api = express();
+api.use(bodyParser.json());
 
 //definiranje ruta//
 api.get('/api/v1/filmovi', filmovi.getAll);

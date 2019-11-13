@@ -37,8 +37,21 @@ const getOne = (id)=> {
     });
 };
 
+const save = (data)=> {
+    return new Promise((success, fail)=> {
+        var f = new Filmovi(data);
+        f.save(data, err =>{
+            if(err){
+                return fail(err);
+            }
+            return success();
+        });
+    });
+};
+
 
 module.exports = {
     getAll,
-    getOne
+    getOne,
+    save
 }

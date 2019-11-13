@@ -13,4 +13,6 @@ mongoose.connect('mongodb+srv://dev:DEV123!@cluster0-3tbei.mongodb.net/videoteka
 }
 
 
-    module.exports = {init};
+    module.exports = {
+        init
+    };

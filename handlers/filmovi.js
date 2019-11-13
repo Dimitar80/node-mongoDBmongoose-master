@@ -22,7 +22,28 @@ const getOne = (req, res) => {
 }
 
 const save = (req, res) => {
-    res.send('OK');
+    // zastita - validacija//
+    var data = req.body;
+    let er = 0;
+    if(data.ime == undefined || data.ime.length == 0){er++;}
+    if(data.rezija == undefined || data.rezija.length == 0){er++;}
+    if(data.godina == undefined || data.godina.length == 0){er++;}
+    if(data.zanr == undefined || data.zanr.length == 0){er++;}
+    if(data.akteri == undefined || data.akteri.length == 0){er++;}
+    if(data.akteri == undefined){er++;}
+
+    if(er ==0){
+    mFilmovi.save(data)
+    .then(() =>{
+        res.status(201).send('Created');
+    })
+    .catch(err => {
+        res.status(500).send(err);
+    });
+   } else {
+    res.status(400).send('Bad request');
+  }
+
 }
 
 const replace =(req, res) => {
