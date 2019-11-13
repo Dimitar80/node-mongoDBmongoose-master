@@ -22,10 +22,23 @@ const getAll = ()=> {
                 return fail(err);
             }
             return success(data);
-        })
-    })
+        });
+    });
 };
 
+const getOne = (id)=> {
+    return new Promise((success, fail)=> {
+        Filmovi.findById(id, (err, data) =>{
+            if(err){
+                return fail(err);
+            }
+            return success(data);
+        });
+    });
+};
+
+
 module.exports = {
-    getAll
+    getAll,
+    getOne
 }

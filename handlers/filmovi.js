@@ -12,7 +12,13 @@ const getAll = (req, res) => {
 }
 
 const getOne = (req, res) => {
-    res.send('OK');
+    mFilmovi.getOne(req.params.id)
+    .then(data =>{
+        res.status(200).send(data);
+    })
+    .catch(err => {
+        res.status(500).send(err);
+    })
 }
 
 const save = (req, res) => {
