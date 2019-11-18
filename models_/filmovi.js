@@ -52,24 +52,18 @@ const save = (data) => {
 
 const replace = (id, data) => {
     return new Promise((success, fail) => {
-        Film.findByIdAndUpdate(id, data, err => {
+        Film.updateOne({_id: id}, data, err => {
             if(err){
                 return fail(err);
             }
-            return success(data);
+            return success();
         });
     });
 };
 
-
-
-
-
-
-
-const remove = (id) => {
+const update = (id, data) => {
     return new Promise((success, fail) => {
-        Film.findByIdAndRemove(id, err => {
+        Film.updateOne({_id: id}, data, err => {
             if(err){
                 return fail(err);
             }
@@ -84,12 +78,25 @@ const remove = (id) => {
 
 
 
+const remove = (id) => {
+    return new Promise((success, fail) => {
+        Film.deleteOne({_id: id}, err => {
+            if(err){
+                return fail(err);
+            }
+            return success();
+        });
+    });
+};
+
+
+
 
 module.exports = {
     getAll,
     getOne,
     save,
     replace,
-    // update,
+    update,
     remove
 };

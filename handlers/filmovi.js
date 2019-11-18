@@ -44,7 +44,6 @@ const save = (req, res) => {
 }
 
 const replace = (req, res) => {
-    // res.send('OK');
     var data = req.body;
     // Validacija //
     let er = 0;
@@ -58,7 +57,7 @@ const replace = (req, res) => {
     if(er == 0){
         mFilmovi.replace(req.params.id, data)
         .then(() => {
-            res.status(201).send('Replaced');
+            res.status(204).send();
         })
         .catch(err => {
             res.status(500).send(err);
@@ -68,11 +67,10 @@ const replace = (req, res) => {
     }
 }
 
-
-const remove = (req, res) => {
-    mFilmovi.remove(req.params.id)
+const update = (req, res) => {
+    mFilmovi.replace(req.params.id, req.body)
     .then(() => {
-        res.status(201).send('Deleted');
+        res.status(204).send();
     })
     .catch(err => {
         res.status(500).send(err);
@@ -80,12 +78,14 @@ const remove = (req, res) => {
 }
 
 
-
-
-
-
-const update = (req, res) => {
-    res.send('OK');
+const remove = (req, res) => {
+    mFilmovi.remove(req.params.id)
+    .then(() => {
+        res.status(204).send('Deleted');
+    })
+    .catch(err => {
+        res.status(500).send(err);
+    });
 }
 
 module.exports = {
