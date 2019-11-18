@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 
 const init = () => {
     mongoose.connect(
@@ -13,7 +14,9 @@ const init = () => {
     });
 }
 
-module.exports = {init};
+module.exports = {
+    init
+};
 
 
 

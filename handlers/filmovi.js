@@ -69,23 +69,30 @@ const replace = (req, res) => {
 }
 
 
+const remove = (req, res) => {
+    mFilmovi.remove(req.params.id)
+    .then(() => {
+        res.status(201).send('Deleted');
+    })
+    .catch(err => {
+        res.status(500).send(err);
+    });
+}
 
 
 
 
-// const update = (req, res) => {
-//     res.send('OK');
-// }
 
-// const remove = (req, res) => {
-//     res.send('OK');
-// }
+
+const update = (req, res) => {
+    res.send('OK');
+}
 
 module.exports = {
     getAll,
     getOne,
     save,
     replace,
-    // update,
-    // remove
+    update,
+    remove
 }

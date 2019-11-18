@@ -51,11 +51,28 @@ const save = (data) => {
 
 const replace = (id, data) => {
     return new Promise((success, fail) => {
-        Film.findByIdAndUpdate(id, data, err => {
+        Film.findOneAndUpdate(id, data, err => {
             if(err){
                 return fail(err);
             }
             return success(data);
+        });
+    });
+};
+
+
+
+
+
+
+
+const remove = (id) => {
+    return new Promise((success, fail) => {
+        Film.findByIdAndRemove(id, err => {
+            if(err){
+                return fail(err);
+            }
+            return success();
         });
     });
 };
@@ -71,5 +88,7 @@ module.exports = {
     getAll,
     getOne,
     save,
-    replace
+    replace,
+    // update,
+    remove
 };
