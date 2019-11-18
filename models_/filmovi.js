@@ -51,7 +51,7 @@ const save = (data) => {
 
 const replace = (id, data) => {
     return new Promise((success, fail) => {
-        Film.findOneAndUpdate(id, data, err => {
+        Film.findByIdAndUpdate(id, data, err => {
             if(err){
                 return fail(err);
             }
