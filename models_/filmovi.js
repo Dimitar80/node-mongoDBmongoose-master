@@ -49,8 +49,23 @@ const save = (data) => {
     });
 };
 
+const replace = (id, data) => {
+    return new Promise((success, fail) => {
+        Film.findByIdAndUpdate(id, data, err => {
+            if(err){
+                return fail(err);
+            }
+            return success(data);
+        });
+    });
+};
+
+
+
+
 module.exports = {
     getAll,
     getOne,
-    save
+    save,
+    replace
 };
