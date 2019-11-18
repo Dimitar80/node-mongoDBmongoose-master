@@ -70,19 +70,22 @@ const replace = (req, res) => {
 
 
 
-const update = (req, res) => {
-    res.send('OK');
-}
 
-const remove = (req, res) => {
-    res.send('OK');
-}
+
+
+// const update = (req, res) => {
+//     res.send('OK');
+// }
+
+// const remove = (req, res) => {
+//     res.send('OK');
+// }
 
 module.exports = {
     getAll,
     getOne,
     save,
     replace,
-    update,
-    remove
+    // update,
+    // remove
 }
