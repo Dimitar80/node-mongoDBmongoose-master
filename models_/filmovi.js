@@ -15,6 +15,7 @@ const Film = mongoose.model(
     })
 );
 
+// All methods //
 // get method //
 const getAll = () => {
     return new Promise((success, fail) => {
