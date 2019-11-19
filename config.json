@@ -4,5 +4,9 @@
         "dbname": "videoteka",
         "username": "dev",
         "password": "DEV123!"
+    },
+    "mailer": {
+        "server": "",
+        "api_key": ""
     }
 }
