@@ -57,6 +57,7 @@ const replace = (req, res) => {
     if(er == 0){
         mFilmovi.replace(req.params.id, data)
         .then(() => {
+            // console.log(data)
             res.status(204).send();
         })
         .catch(err => {
