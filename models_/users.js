@@ -27,9 +27,6 @@ const createUser = (data) => {
 
 
 
-
-
-
 module.exports = {
     createUser
 }

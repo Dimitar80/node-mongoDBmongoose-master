@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb+srv://dev:DEV123!@cluster0-3tbei.mongodb.net/sportists?retryWrites=true&w=majority',
  {useNewUrlParser: true, useUnifiedTopology: true})
     .then(res => {
-        console.log(res);
+        // console.log(res);
     })
     .catch(err => {
         console.log(err);

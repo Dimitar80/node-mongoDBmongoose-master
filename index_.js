@@ -114,13 +114,13 @@ _modified: new Date()
 // })
 
 //  1parameter query!,  second calback//
-// Klient.find({ "lokacija.grad": "Kumanovo", zanrovi: "akcija"}, (err, data)=>{
-//  if(err){
-//      console.log('could not read data');
-//      return;
-//  }
-// //  console.log(data);
-//  data.forEach((k, i)=>{
-//      console.log(k.ime, ' ', k.prezime, ' ', k.email);
-//  })
-// });
+Klient.find({ "lokacija.grad": "Kumanovo", zanrovi: "akcija"}, (err, data)=>{
+ if(err){
+     console.log('could not read data');
+     return;
+ }
+//  console.log(data);
+ data.forEach((k, i)=>{
+     console.log(k.ime, ' ', k.prezime, ' ', k.email);
+ })
+});
