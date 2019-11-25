@@ -8,5 +8,8 @@
     "mailer": {
         "server": "",
         "api_key": ""
+    },
+    "jwt": {
+        "key": "kluch"
     }
 }
