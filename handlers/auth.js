@@ -13,7 +13,7 @@ const register = (req, res) => {
         }
     })
     .then(() => {
-        return res.status(201).send('ok');
+        return res.status(201).send('ok - registration is created');
     })
     .catch(err => {
         console.log(err);

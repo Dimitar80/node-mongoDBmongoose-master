@@ -17,13 +17,15 @@ const init = (config) => {
 
 const parseCString = (config) => {
     var cs = uri.replace('{username}', config.username);
-    cs = cs.replace('{password}', config.password);
-    cs = cs.replace('{host}', config.host);
-    cs = cs.replace('{dbname}', config.dbname);
+        cs = cs.replace('{password}', config.password);
+        cs = cs.replace('{host}', config.host);
+        cs = cs.replace('{dbname}', config.dbname);
     return cs;
 }
 
-module.exports = {init};
+module.exports = {
+    init
+};
 
 
 // const init = (config) => {
