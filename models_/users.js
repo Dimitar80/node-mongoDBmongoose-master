@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 
+
+
+//Models//
 var User = mongoose.model(
     'users',
     new mongoose.Schema({
@@ -23,6 +26,7 @@ const createUser = (data) => {
 }
 
 
+// getUserPasswordByEmail //
 const getUserPasswordByEmail = (email) => {
     return new Promise((success, fail) => {
         User.find({email: email}, {password: 1, email: 1, first_name:1, last_name: 1}, (err, data) => {
@@ -33,6 +37,7 @@ const getUserPasswordByEmail = (email) => {
         })
     })
 }
+
 
 
 
