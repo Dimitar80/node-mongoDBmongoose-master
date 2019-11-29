@@ -33,7 +33,7 @@ const getUserPasswordByEmail = (email) => {
             if(err){
                 return fail(err);
             }
-            return success(data[0]);
+            return success(data[0]); //celiot "Prv" objekt od baza//
         })
     })
 }
