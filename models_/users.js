@@ -25,7 +25,6 @@ const createUser = (data) => {
     });
 }
 
-
 // getUserPasswordByEmail //
 const getUserPasswordByEmail = (email) => {
     return new Promise((success, fail) => {
@@ -33,6 +32,7 @@ const getUserPasswordByEmail = (email) => {
             if(err){
                 return fail(err);
             }
+            console.log(data[0])
             return success(data[0]);
         })
     })
