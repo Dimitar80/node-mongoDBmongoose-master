@@ -4,10 +4,23 @@ var jwt = require('express-jwt');
 const config = require('../config/index.js');
 const db = require('../db/connection');
 const auth = require('../handlers/auth');
+const path = require('path');
+
 
 db.init(config.getConfig('db'));
 
+
 var api = express();
+////////////////////////////////
+// only for testing purposes za staticen file//
+///////////////////////////////
+var pub = path.join(__dirname, '..', 'public');
+api.use('/public', express.static(pub));
+////////////////////////////////
+// only for testing purposes //
+///////////////////////////////
+
+
 //middleware//
 api.use(bodyParser.json()); 
 
@@ -18,7 +31,7 @@ api.use(
         {secret: config.getConfig('jwt').key}
     )
     .unless(
-        {path: ['/api/v1/register', '/api/v1/login']}
+        {path: ['/api/v1/register', '/api/v1/login', '/public']}
     )
 );
 

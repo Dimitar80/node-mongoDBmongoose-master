@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type='text' value='dimce@dimcev.456.mk' id='email' placeholder='email'>
+    <br/>
+    <input type='password' value='dimce@dimcev' id='password' placeholder='password'>
+    <br/>
+    <button id='btn-login'> Log in </button>
+
+    <script>
+        var email = document.querySelector('#email');
+        var password = document.querySelector('#password');
+        var btnlogin = document.querySelector('#btn-login');
+
+        btnlogin.addEventListener('click', () => {
+            var data = {
+                email: email.value,
+                password: password.value,
+            };
+        
+            fetch( 
+                '/api/v1/login',
+                {
+                    method: 'post',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                }
+            )
+            .then(res => res.json())
+            .then(d => {
+                // console.log(d.jwt);
+                localStorage.setItem('jwt', d.jwt);
+            })
+            .catch(err => {
+                console.log(err)
+            });
+        });
+
+    </script>
+    <hr/>
+    <button >Renew token</button>
+    <script>
+        var btnRenew = document.querySelector('#btn-renew');
+
+        btnRenew.addEventListener('click', () => {
+            fetch(
+                '/api/v1/renew',
+                {
+                    method: 'get',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('jwt')}`
+                    }
+                }
+            )
+            .then(res => res.text())
+            .then(d => {
+                console.log
+            })
+        })
+    </script>
+</body>
+</html>
