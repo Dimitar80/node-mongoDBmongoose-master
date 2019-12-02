@@ -10,6 +10,8 @@ db.init(config.getConfig('db'));
 var api = express();
 //middleware//
 api.use(bodyParser.json()); 
+
+// JWT in microservices //
 //middleware//
 api.use(
     jwt(
