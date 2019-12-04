@@ -18,9 +18,9 @@ const Film = mongoose.model(
 
 // All methods //
 // get method //
-const getAll = (userID) => {
+const getAll = (/*userID*/q, sort) => {
     return new Promise((success, fail) => {
-        Film.find({user_id: userID}, (err, data) => {
+        Film.find(/*{user_id: userID},*/ /*{},*/q, {}, {sort: sort}, (err, data) => {
             if(err){
                 return fail(err);
             }

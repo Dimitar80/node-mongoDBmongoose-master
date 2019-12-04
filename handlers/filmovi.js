@@ -1,7 +1,43 @@
 const mFilmovi = require('../models_/filmovi');
 
 const getAll = (req, res) => {
-    mFilmovi.getAll(req.user.id)
+
+    console.log(req.query);
+    let q = {};
+    let sort = {};
+
+    if(req.query.oscar != undefined) {
+        q.oscar = req.query.oscar === 'true' ? true : false;
+    }
+
+
+    if(req.query.godina_from != undefined) {
+        if(q.godina == undefined) {
+           q.godina = {};
+        }
+        q.godina.$gte = new Date(Number(req.query.godina_from));
+    }
+
+    if(req.query.godina_to != undefined) {
+        if(q.godina == undefined) {
+           q.godina = {};
+        }
+        q.godina.$lt = new Date(Number(req.query.godina_to));
+    }
+
+    if(req.query.sort != undefined) {
+        let sortable = ['godina', 'ime'];
+        let sq = req.query.sort.split(":");
+        if(sortable.indexOf(sq[0]) > -1) {
+            // sort[sq[0]] = sq[1] == 'asc' ? 1 : -1;
+            sort[sq[0]] = sq[1] == 'desc' ? -1 : 1;
+            //sort.godina = -1
+        }
+
+    }
+
+
+    mFilmovi.getAll(/*req.user.id*/q, sort)
     .then(data => {
         res.status(200).send(data);
     })
