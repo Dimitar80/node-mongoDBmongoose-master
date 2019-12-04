@@ -6,26 +6,19 @@ const db = require('../db/connection');
 const auth = require('../handlers/auth');
 const path = require('path');
 
-
 db.init(config.getConfig('db'));
 
 
 var api = express();
-////////////////////////////////
-// only for testing purposes za staticen file//
-///////////////////////////////
+// //////////////////////////
+// only for testing purposes
+// //////////////////////////
 var pub = path.join(__dirname, '..', 'public');
 api.use('/public', express.static(pub));
-////////////////////////////////
-// only for testing purposes //
-///////////////////////////////
-
-
-//middleware//
-api.use(bodyParser.json()); 
-
-// JWT in microservices //
-//middleware//
+// //////////////////////////
+// only for testing purposes
+// //////////////////////////
+api.use(bodyParser.json());
 api.use(
     jwt(
         {secret: config.getConfig('jwt').key}
@@ -35,13 +28,20 @@ api.use(
     )
 );
 
-
 api.post('/api/v1/register', auth.register);
 api.post('/api/v1/login', auth.login);
 api.get('/api/v1/renew', auth.renew);
 api.post('/api/v1/reset-link', auth.resetLink);
 api.post('/api/v1/reset-password', auth.resetPassword);
 api.post('/api/v1/change-password', auth.changePassword);
+
+api.use(function (err, req, res, next) {
+    if (err.name === 'UnauthorizedError') {
+        res.status(401).send({message: 'Invalid token'});
+    } else {
+        next(err);
+    }
+});
 
 api.listen(8081, err => {
     if(err){

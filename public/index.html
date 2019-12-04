@@ -7,9 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <input type='text' value='dimce@dimcev.456.mk' id='email' placeholder='email'>
+    <!-- Hardcoded -->
+    <!-- <input type='text' value='ace@acev.85.mk' id='email' placeholder='email'> -->
+    <input type='text'  id='email' placeholder='email'>
     <br/>
-    <input type='password' value='dimce@dimcev' id='password' placeholder='password'>
+    <!-- Hardcoded -->
+    <!-- <input type='password' value='AbCdO85' id='password' placeholder='password'> -->
+    <input type='password'  id='password' placeholder='password'>
     <br/>
     <button id='btn-login'> Log in </button>
 
@@ -46,10 +50,9 @@
 
     </script>
     <hr/>
-    <button >Renew token</button>
+    <button id="btn-renew">Renew token</button>
     <script>
         var btnRenew = document.querySelector('#btn-renew');
-
         btnRenew.addEventListener('click', () => {
             fetch(
                 '/api/v1/renew',
@@ -60,11 +63,15 @@
                     }
                 }
             )
-            .then(res => res.text())
+            .then(res => res.json())
             .then(d => {
-                console.log
+                console.log(d);
             })
-        })
+            .catch(err => {
+                console.log(err);
+            });
+        });
     </script>
+
 </body>
 </html>

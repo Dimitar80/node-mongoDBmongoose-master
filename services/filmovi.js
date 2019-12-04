@@ -14,7 +14,7 @@ const api = express();
 api.use(bodyParser.json());
 //setup//
 
-// Working with JWT //
+// Working with JWT
 //middleware//
 api.use(
     jwt(
