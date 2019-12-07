@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 // Check if some npm is missing, on class ???///
 
-mongoose.connect('mongodb+srv://dev:DEV123!@cluster0-3tbei.mongodb.net/videoteka?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb+srv://dev:DEV123!@cluster0-3tbei.mongodb.net/videoteka?retryWrites=true&w=majority',
+ {useNewUrlParser: true, useUnifiedTopology: true})
     .then(res => {
         // console.log(res);
     })

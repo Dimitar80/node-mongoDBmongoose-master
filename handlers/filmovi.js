@@ -1,5 +1,7 @@
 const mFilmovi = require('../models_/filmovi');
 
+//Handeler functions - controlers//
+// With queries //
 const getAll = (req, res) => {
 
     console.log(req.query);
