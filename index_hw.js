@@ -62,7 +62,7 @@ mongoose.connect('mongodb+srv://dev:DEV123!@cluster0-3tbei.mongodb.net/sportists
          })
        );
 
-       //insance//
+       //instance//
        var bpOne = new Basketball_player(
         {
           first_name : "Mitko", 
