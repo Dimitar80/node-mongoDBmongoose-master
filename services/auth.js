@@ -28,6 +28,7 @@ api.use(
     )
 );
 
+
 api.post('/api/v1/register', auth.register);
 api.post('/api/v1/login', auth.login);
 api.get('/api/v1/renew', auth.renew);
@@ -43,13 +44,13 @@ api.use(function (err, req, res, next) {
     }
 });
 
-api.listen(8081, err => {
+api.listen(8080, err => {
     if(err){
         console.log('Could not start server');
         console.log(err);
         return;
     }
-    console.log('Server started on port 8081');
+    console.log('Server started on port 8080');
 });
 
 

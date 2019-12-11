@@ -37,11 +37,10 @@ const getAll = (req, res) => {
         }
 
     }
-
-
-    mFilmovi.getAll(/*req.user.id*/q, sort)
+     mFilmovi.getAll(/*req.user.id*/q, sort)
     .then(data => {
         res.status(200).send(data);
+        console.log(data)
     })
     .catch(err => {
         res.status(500).send(err);

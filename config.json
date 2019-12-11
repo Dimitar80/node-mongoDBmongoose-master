@@ -1,7 +1,7 @@
 {
     "db": {
         "host": "cluster0-3tbei.mongodb.net",
-        "dbname": "videoteka",
+        "dbname": "pro",
         "username": "dev",
         "password": "DEV123!"
     },

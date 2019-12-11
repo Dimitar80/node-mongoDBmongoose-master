@@ -9,7 +9,12 @@ var User = mongoose.model(
         first_name: String,
         last_name: String,
         email: String,
-        password: String
+        password: String,
+        date_of_birth: Date,
+        telephone: String,
+        country: String,
+        _created: Date,
+        _modified: Date
     })
 );
 
@@ -27,8 +32,8 @@ const createUser = (data) => {
 
 // getUserPasswordByEmail //
 const getUserPasswordByEmail = (email) => {
-    return new Promise((success, fail) => {
-        User.find({email: email}, {password: 1, email: 1, first_name:1, last_name: 1}, (err, data) => {
+    return new Promise((success, fail) => {  // 1 ili 0 - true ili false//
+        User.find({email: email}, {password: 1, email: 1, first_name:1, last_name: 1, }, (err, data) => {
             if(err){
                 return fail(err);
             }
