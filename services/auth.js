@@ -28,7 +28,7 @@ api.use(
     )
 );
 
-
+//api.post za saveNewUser//
 api.post('/api/v1/register', auth.register);
 api.post('/api/v1/login', auth.login);
 api.get('/api/v1/renew', auth.renew);
