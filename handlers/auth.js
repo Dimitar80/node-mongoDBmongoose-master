@@ -51,6 +51,7 @@ const register = (req, res) => {
     })
     .then(() => {
         return res.status(201).send('ok');
+        console.log(data)
     })
     .catch(err => {
         console.log(err);

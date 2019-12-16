@@ -13,7 +13,8 @@ const Film = mongoose.model(
     }, 
     {
         collection: 'filmovi'
-    })
+    }
+    )
 );
 
 // All methods //

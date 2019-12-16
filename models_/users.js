@@ -15,13 +15,17 @@ var User = mongoose.model(
         country: String,
         _created: Date,
         _modified: Date
-    })
+    } /*,
+    {
+        collection: 'user'
+    }*/
+    )
 );
 
 const createUser = (data) => {
     return new Promise((success, fail) => {
         var user = new User(data);
-        user.save(err =>{
+        user.save(/*data,*/ err =>{
             if(err){
                 return fail(err);
             }

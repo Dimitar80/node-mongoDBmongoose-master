@@ -21,6 +21,7 @@ const getAll = (req, res) => {
     if(req.query.sort != undefined) {
         let sortable = ['purchaseDate', 'productPrice'];
         let sq = req.query.sort.split(':');
+        console.log(sq)
         if(sortable.indexOf(sq[0]) > -1){
             sort[sq[0]] = sq[1] == 'desc' ? -1 : 1;
         }

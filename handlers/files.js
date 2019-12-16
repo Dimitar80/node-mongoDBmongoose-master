@@ -7,7 +7,7 @@ const UploadFile = (req, res) => {
   if(file.size > 10 * 1024 * 1024){
     return res.status(500).send('Filesize too big');
   }
-
+    //express !?//
   var allowedTypes = [
       'image/png', 
       'image/jpg', 
