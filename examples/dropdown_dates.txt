@@ -1,8 +1,16 @@
+class = 
+state {
+    vMonth = 2,
+    vYear = null
+    
+}
+
 <select name="vMonth" onChange={this.getDate} value={vMonth}>
     <option value="1">Jan</option>
     <option value="2">Feb</option>
     <option value="3">Mar</option>
     <option value="4">Apr</option>
+     <option value="12">Dec</option>
 </select>
 
 <select name="vYear" onChange={this.getDate} value={vYear}>
@@ -13,16 +21,17 @@
 const getDate = (e) => {
     this.setState({
         [e.target.name]: e.target.value
+        
     });
 
-    // this.state.vMonth = 5
+    // this.setState.vMonth = 5
     // this.state.vYear = 2019
 
     dateStart = new Date(`${this.state.vYear}-${this.state.vMonth}-1`);
     dateEnd = new Date(`${this.state.vYear}-${this.state.vMonth+1}-1`);
-
+    newDate(2019-05)
     // dateStart = new Date('2019-5-1');
-    // dateEnd = new Date('2019-6-1');
+    // dateEnd = new Date('2019-6(8)-1');
 
     qDateStart = dateStart.getTime();
     qDateEnd = dateEnd.getTime();

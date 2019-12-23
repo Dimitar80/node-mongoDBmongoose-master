@@ -18,11 +18,11 @@ api.use(bodyParser.json());
 //     next();
 // });
  
-// api.use(
-//     jwt({ 
-//         secret: config.getConfig('jwt').key
-//     })
-// );
+api.use(
+    jwt({ 
+        secret: config.getConfig('jwt').key
+    })
+);
 
 api.get('/api/v1/products', products.getAll);
 api.get('/api/v1/products/:id', products.getOne);
@@ -31,11 +31,11 @@ api.put('/api/v1/products/:id', products.replace);
 api.patch('/api/v1/products/:id', products.update);
 api.delete('/api/v1/products/:id', products.remove);
 
-api.listen(8081, err => {
+api.listen(8082, err => {
     if(err){
         console.log('could not start server');
         console.log(err);
         return;
     }
-    console.log('server started successfully on port 8081');
+    console.log('server started successfully on port 8082');
 });

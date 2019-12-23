@@ -18,15 +18,15 @@ api.use('/public', express.static(pub));
 // //////////////////////////
 // only for testing purposes
 // //////////////////////////
-// api.use(bodyParser.json());
-// api.use(
-//     jwt(
-//         {secret: config.getConfig('jwt').key}
-//     )
-//     .unless(
-//         {path: ['/api/v1/register', '/api/v1/login', '/public']}
-//     )
-// );
+api.use(bodyParser.json());
+api.use(
+    jwt(
+        {secret: config.getConfig('jwt').key}
+    )
+    .unless(
+        {path: ['/api/v1/register', '/api/v1/login', '/public']}
+    )
+);
 
 //api.post za saveNewUser//
 api.post('/api/v1/register', auth.register);
@@ -44,13 +44,13 @@ api.use(function (err, req, res, next) {
     }
 });
 
-api.listen(8080, err => {
+api.listen(8081, err => {
     if(err){
         console.log('Could not start server');
         console.log(err);
         return;
     }
-    console.log('Server started on port 8080');
+    console.log('Server started on port 8081');
 });
 
 

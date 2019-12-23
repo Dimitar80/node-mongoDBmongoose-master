@@ -50,7 +50,7 @@ const register = (req, res) => {
         }
     })
     .then(() => {
-        return res.status(201).send('ok');
+        return res.status(201).send('ok, created');
         console.log(data)
     })
     .catch(err => {

@@ -1,41 +1,44 @@
 const mProducts = require('../models_/products')
 
 const getAll = (req, res) => {
-      let q = {}
-    // let q = {user_id: req.user.id};
-    // let sort = {};
       
-    // if(req.query.purcdate_from != undefined) {
-    //     if(q.purchaseDate == undefined){
-    //         q.purchaseDate = {};
-    //     }
-    //     q.purchaseDate.$gte = new Date(Number(req.query.purcdate_from));
-    // }
+    let q = {user_id: req.user.id};
+    let sort = {};
+      
+    if(req.query.purcdate_from != undefined) {
+        if(q.purchaseDate == undefined){
+            q.purchaseDate = {};
+        }
+        q.purchaseDate.$gte = new Date(Number(req.query.purcdate_from));
+    }
 
-    // if(req.query.purcdate_to != undefined) {
-    //     if(q.purchaseDate == undefined){
-    //         q.purchaseDate = {};
-    //     }
-    //     q.purchaseDate.$lte = new Date(Number(req.query.purcdate_to));
-    // }
+    if(req.query.purcdate_to != undefined) {
+        if(q.purchaseDate == undefined){
+            q.purchaseDate = {};
+        }
+        q.purchaseDate.$lte = new Date(Number(req.query.purcdate_to));
+    }
 
-    // if(req.query.sort != undefined) {
-    //     let sortable = ['purchaseDate', 'productPrice'];
-    //     let sq = req.query.sort.split(':');
-    //     console.log(sq)
-    //     if(sortable.indexOf(sq[0]) > -1){
-    //         sort[sq[0]] = sq[1] == 'desc' ? -1 : 1;
-    //     }
-    // }
-    mProducts.getAll(q,/* sort*/)
+    if(req.query.sort != undefined) {
+        let sortable = ['purchaseDate', 'productPrice'];
+        let sq = req.query.sort.split(':');
+        console.log(sq)
+        if(sortable.indexOf(sq[0]) > -1){
+            sort[sq[0]] = sq[1] == 'desc' ? -1 : 1;
+        }
+    }
+    mProducts.getAll(q, sort)
     .then(data => {
         res.status(200).send(data);
         console.log(data)
     })
     .catch(err => {
         res.status(500).send(err);
+        console.log(err)
     });
 }
+
+
 
 const getOne = (req, res) => {
     mProducts.getOne(req.params.id, req.user.id)
