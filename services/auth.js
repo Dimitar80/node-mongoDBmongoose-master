@@ -18,15 +18,15 @@ api.use('/public', express.static(pub));
 // //////////////////////////
 // only for testing purposes
 // //////////////////////////
-api.use(bodyParser.json());
-api.use(
-    jwt(
-        {secret: config.getConfig('jwt').key}
-    )
-    .unless(
-        {path: ['/api/v1/register', '/api/v1/login', '/public']}
-    )
-);
+// api.use(bodyParser.json());
+// api.use(
+//     jwt(
+//         {secret: config.getConfig('jwt').key}
+//     )
+//     .unless(
+//         {path: ['/api/v1/register', '/api/v1/login', '/public']}
+//     )
+// );
 
 //api.post za saveNewUser//
 api.post('/api/v1/register', auth.register);

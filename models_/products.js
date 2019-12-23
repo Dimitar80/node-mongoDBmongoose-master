@@ -15,9 +15,9 @@ const Product = mongoose.model(
     )
 );
 
-const getAll = (q, sort) => {
+const getAll = (/*q, sort*/) => {
     return new Promise((success, fail) => {
-        Product.find(q, {}, {sort: sort}, (err, data) => {
+        Product.find(q, /*{}, {sort: sort},*/ (err, data) => {
             if(err){
                 return fail(err);
             }

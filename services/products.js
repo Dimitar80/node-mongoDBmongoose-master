@@ -16,12 +16,13 @@ api.use(bodyParser.json());
 //     res.setHeader("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT,DELETE");
 //     res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization");
 //     next();
-// }); 
-api.use(
-    jwt({ 
-        secret: config.getConfig('jwt').key
-    })
-);
+// });
+ 
+// api.use(
+//     jwt({ 
+//         secret: config.getConfig('jwt').key
+//     })
+// );
 
 api.get('/api/v1/products', products.getAll);
 api.get('/api/v1/products/:id', products.getOne);

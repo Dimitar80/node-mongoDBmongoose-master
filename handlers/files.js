@@ -14,7 +14,8 @@ const UploadFile = (req, res) => {
       'image/png', 
       'image/jpg', 
       'image/jpeg', 
-      'image/jpeg', 
+      'image/jpeg',
+      // 'image/jfif', 
       'image/gif' 
   ];
 
@@ -44,7 +45,7 @@ const UploadFile = (req, res) => {
 };
 
 
-const Downloadfile = (req, res) => {
+const DownloadFile = (req, res) => {
   
   let filepath = path.resolve(`${__dirname}/../uploads/${req.user.id}/${req.params.filename}`);
     if(fs.existsSync(filepath)){
@@ -57,5 +58,5 @@ const Downloadfile = (req, res) => {
 
 module.exports = {
     UploadFile,
-    Downloadfile
+    DownloadFile
 }

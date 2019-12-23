@@ -13,6 +13,8 @@ var User = mongoose.model(
         date_of_birth: Date,
         telephone: String,
         country: String,
+        _created: Date,
+        _modified: Date
        
     } /*,
     {
