@@ -21,9 +21,17 @@ api.all('/api/v1/products/*', (req, res) => {
     apiProxy.web(req, res, {target: 'http://localhost:8082'});
 });
 
+api.all('/*', (req, res) => {
+    res.status(400).send('not found')
+})
 
+api.listen(process.env.PORT, err =>{
+    if(err){
+        console.log('could not start server');
+        console.log(err);
+        return;
+    }
+    console.log('server started successfully')
+});
 
-
-
-
-api.listen(5000);
+// api.listen(5000);
