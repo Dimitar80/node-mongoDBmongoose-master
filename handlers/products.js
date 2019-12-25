@@ -2,7 +2,7 @@ const mProducts = require('../models_/products')
 
 const getAll = (req, res) => {
       
-    let q = {user_id: req.user.id};
+    let q = {/*user_id: req.user.id*/};
     let sort = {};
       
     if(req.query.purcdate_from != undefined) {
@@ -27,7 +27,7 @@ const getAll = (req, res) => {
             sort[sq[0]] = sq[1] == 'desc' ? -1 : 1;
         }
     }
-    mProducts.getAll(q, sort)
+    mProducts.getAll(/*q, sort*/)
     .then(data => {
         res.status(200).send(data);
         console.log(data)

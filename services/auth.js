@@ -28,6 +28,16 @@ api.use(
     )
 );
 
+// api.use(
+//     jwt({ 
+//         secret: config.getConfig('jwt').key
+//     })
+//     .unless({
+//     path: ['/api/v1/register', '/api/v1/login', '/public', /\/api\/v1\/confirm\/.*/, 
+//             '/api/v1/reset-link', '/api/v1/reset-password']
+//     })
+// );
+
 //api.post za saveNewUser//
 api.post('/api/v1/register', auth.register);
 api.post('/api/v1/confirm/:confirm_hash', auth.confirm);

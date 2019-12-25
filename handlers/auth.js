@@ -61,7 +61,9 @@ const register = (req, res) => {
                         from: 'designcrafts.mk@gmail.com',
                         subject: 'Thanks for registering',
                         text: 'Thanks for registering',
-                        html: `<a href="http://localhost:8081/api/v1/confirm/${confirm_hash}">Click here to confirm your account</a>`,
+                        html: `<a href="http://localhost:8081/api/v1/confirm/${confirm_hash}">
+                               Click here to confirm your account
+                               </a>`,
                     };
                     sgMail.send(msg);
                     return;
