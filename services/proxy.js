@@ -34,4 +34,3 @@ api.listen(process.env.PORT, err =>{
     console.log('server started successfully')
 });
 
-// api.listen(5000);
