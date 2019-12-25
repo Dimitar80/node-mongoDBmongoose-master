@@ -1,4 +1,4 @@
-const express = require(express);
+const express = require('express');
 const proxy = require('http-proxy');
 
 var api = express();
