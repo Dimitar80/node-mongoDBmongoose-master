@@ -60,9 +60,8 @@ const save = (req, res) => {
     if(data.purchaseDate == undefined || data.purchaseDate.length == 0){er++;}
     if(data.productPrice == undefined || data.productPrice.length == 0){er++;}
     
-
     if(er == 0){
-        mProducts.save({...data, user_id: req.user.id})
+        mProducts.save({...data, /*user_id: req.user.id*/})
         .then(() => {
             res.status(201).send('Created successfully');
         })
