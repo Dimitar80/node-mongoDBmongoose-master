@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-// mongoose.set('useFindAndModify', false);
+mongoose.set('useFindAndModify', false);
 const uri = 'mongodb+srv://{username}:{password}@{host}/{dbname}?retryWrites=true&w=majority';
 
 
