@@ -1,5 +1,6 @@
 const mProducts = require("../models_/products");
 
+// ZA SEGA FINISHING 13-01-2020 Comment Bez users-auth //
 const getAll = (req, res) => {
   //   let q = {user_id: req.user.id};
   console.log(req.query);
