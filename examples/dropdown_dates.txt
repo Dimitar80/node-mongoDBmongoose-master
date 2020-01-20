@@ -31,7 +31,7 @@ const getDate = (e) => {
     dateEnd = new Date(`${this.state.vYear}-${this.state.vMonth+1}-1`);
     newDate(2019-05)
     // dateStart = new Date('2019-5-1');
-    // dateEnd = new Date('2019-6(8)-1');
+    // dateEnd = new Date('2019-6-1');
 
     qDateStart = dateStart.getTime();
     qDateEnd = dateEnd.getTime();
