@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 //Models//
-var User = mongoose.model(
+const User = mongoose.model(
   "users",
   new mongoose.Schema(
     {
@@ -38,13 +38,12 @@ const createUser = data => {
   });
 };
 
-// getUserPasswordByEmail //
 const getUserPasswordByEmail = email => {
   return new Promise((success, fail) => {
     // 1 ili 0 - true ili false//
     User.find(
       { email: email },
-      { password: 1, email: 1, first_name: 1, last_name: 1 },
+      //   { password: 1, email: 1, first_name: 1, last_name: 1 },
       (err, data) => {
         if (err) {
           return fail(err);
@@ -54,6 +53,18 @@ const getUserPasswordByEmail = email => {
     );
   });
 };
+
+// const login = (email) => {
+//     return new Promise((success,fail) => {
+//         User.find({email: email}, (err,data) => {
+//             if(err) {
+//                 console.log(err);
+//                 return fail(err);
+//             }
+//             return success(data[0])
+//         })
+//     })
+// }
 
 const confirmUserAccount = hash => {
   return new Promise((success, fail) => {

@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-// const jwt = require('express-jwt');
+const jwt = require("express-jwt");
 
 const config = require("../config/index.js");
 const DBConn = require("../db/connection");
@@ -20,11 +20,19 @@ api.use(cors());
 //     next();
 // });
 
-// api.use(
-//     jwt({
-//         secret: config.getConfig('jwt').key
-//     })
+//jwt tokens
+// var jwt = require('express-jwt');
+// app.use(                                                       //sekoj req ke pomine niz ova i ke vrati req.user
+//     jwt(
+//         { secret: config.getConfig('jwt').key }
+//     )
 // );
+
+api.use(
+  jwt({
+    secret: config.getConfig("jwt").key
+  })
+);
 
 api.get("/api/v1/products/", products.getAll);
 api.get("/api/v1/products/:id", products.getOne);
