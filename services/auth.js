@@ -48,7 +48,6 @@ api.use(
   })
 );
 
-// UGLAV!!! 01-20-2020 //
 //api.post za saveNewUser//
 api.post("/api/v1/auth/register", auth.register);
 api.post("/api/v1/auth/confirm/:confirm_hash", auth.confirm);

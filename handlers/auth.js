@@ -113,6 +113,7 @@ const register = (req, res) => {
             }
             return mUsers.createUser({ ...req.body, password: hash });
           });
+          // console.log(...req.body);
         });
       } else {
         throw new Error("Validation failed!");
@@ -127,40 +128,6 @@ const register = (req, res) => {
     });
 };
 
-//STEF//
-// const register = (req, res) => {
-//     const newUser = req.body;
-//     var validate = new validator.Validator(newUser, userValidator.createUser)
-//     validate.check()
-//     .then(matched => {
-//         if(matched) {
-//             bcrypt.genSalt(10, function(err, salt) {
-//                 if(err) {
-//                     throw new Error(err);
-//                     return;
-//                 }
-//                 bcrypt.hash(newUser.password, salt, function(err, hash) {
-//                     if(err) {
-//                         throw new Error(err);
-//                         return;
-//                     }
-//                     return authModel.register({...newUser, password: hash})
-//                 })
-//             })
-//         } else {
-//             throw new Error("Validation failed!");
-//         }
-//     })
-//     .then(() => {
-//         return res.status(201).send("OK");
-//     })
-//     .catch(err => {
-//         console.log(err);
-//         return res.status(500).send(validate.errors);
-//     })
-// }
-
-// DP //
 // const login = (req, res) => {
 //   mUsers
 //     .getUserPasswordByEmail(req.body.email)
@@ -192,7 +159,6 @@ const register = (req, res) => {
 //     });
 // };
 
-//Meto //
 const login = (req, res) => {
   mUsers
     .getUserPasswordByEmail(req.body.email)

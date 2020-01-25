@@ -2,9 +2,9 @@ const mProducts = require("../models_/products");
 
 // ZA SEGA FINISHING 13-01-2020 Comment Bez users-auth //
 const getAll = (req, res) => {
-  //   let q = {user_id: req.user.id};
+  let q = { user_id: req.user.id };
   console.log(req.query);
-  let q = {};
+  // let q = {};
   let sort = {};
 
   if (req.query.purcdate_from != undefined) {
@@ -25,7 +25,7 @@ const getAll = (req, res) => {
   if (req.query.sort != undefined) {
     let sortable = ["purchaseDate", "productPrice"];
     let sq = req.query.sort.split(":");
-    console.log(sq);
+    // console.log(sq);
     if (sortable.indexOf(sq[0]) > -1) {
       sort[sq[0]] = sq[1] == "desc" ? -1 : 1;
       console.log(sort);
@@ -45,7 +45,7 @@ const getAll = (req, res) => {
 
 const getOne = (req, res) => {
   mProducts
-    .getOne(req.params.id /*req.user.id*/)
+    .getOne(req.params.id, req.user.id)
     .then(data => {
       res.status(200).send(data);
       // console.log(data)
@@ -79,7 +79,7 @@ const save = (req, res) => {
 
   if (er == 0) {
     mProducts
-      .save({ ...data /*user_id: req.user.id*/ })
+      .save({ ...data, user_id: req.user.id })
       .then(() => {
         res.status(201).send("Data created successfully");
         // console.log(data)

@@ -43,7 +43,7 @@ const getUserPasswordByEmail = email => {
     // 1 ili 0 - true ili false//
     User.find(
       { email: email },
-      //   { password: 1, email: 1, first_name: 1, last_name: 1 },
+      { password: 1, email: 1, first_name: 1, last_name: 1 },
       (err, data) => {
         if (err) {
           return fail(err);
