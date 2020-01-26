@@ -29,7 +29,7 @@ const config = require("../config/index.js");
 // }
 
 // UGLAV!!! 01-20-2020 //
-// hashing //
+// hashing so confirm mail sG//
 // DP //
 // const register = (req, res) => {
 //   var validate = new validator.Validator(req.body, vUsers.createUser);
@@ -94,7 +94,6 @@ const config = require("../config/index.js");
 //     });
 // };
 
-//Meto //
 const register = (req, res) => {
   var validate = new validator.Validator(req.body, vUsers.createUser);
   validate
@@ -163,11 +162,11 @@ const login = (req, res) => {
   mUsers
     .getUserPasswordByEmail(req.body.email)
     .then(data => {
-      bcrypt.compare(req.body.password, data.password, (err, result) => {
+      bcrypt.compare(req.body.password, data.password, (err, rez) => {
         if (err) {
           return res.status(500).send("Could not compare passwords");
         }
-        if (result) {
+        if (rez) {
           var tokenData = {
             id: data._id,
             full_name: `${data.first_name} ${data.last_name}`,
