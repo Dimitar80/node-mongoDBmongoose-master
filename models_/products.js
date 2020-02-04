@@ -16,7 +16,7 @@ const Product = mongoose.model(
 
 const getAll = (q, sort) => {
   return new Promise((success, fail) => {
-    console.log("In find: ", sort);
+    // console.log("In find: ", sort);
     // Product.find(/*q,*/ {}, null, { sort: sort }, (err, data) => {
     Product.find(
       /*{user_id: userID},*/ /*{},*/ q,
@@ -59,7 +59,7 @@ const save = data => {
 const replace = (id, data) => {
   return new Promise((success, fail) => {
     Product.findByIdAndUpdate(id, data, err => {
-      console.log(id);
+      console.log("Product models - row 62", id);
       if (err) {
         return fail(err);
       }

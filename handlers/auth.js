@@ -177,10 +177,11 @@ const login = (req, res) => {
             jwt: token,
             first_name: data.first_name,
             last_name: data.last_name,
-            email: data.email
+            email: data.email,
+            id: data._id
           });
         }
-        return res.status(400).send("not found");
+        return res.status(400).send("not found - PROBLEM!");
       });
     })
     .catch(err => {
@@ -198,6 +199,61 @@ const confirm = (req, res) => {
     .catch(err => {
       return res.status(500).send("internal Server Error");
     });
+};
+
+const getOne = (req, res) => {
+  mUsers
+    .getOne(req.params.id /*req.user.id*/)
+    .then(data => {
+      res.status(200).send(data);
+      // console.log(data);
+      console.log("User-getOne - req.params.id", req.params.id);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+      console.log(err);
+    });
+};
+
+const replaceUser = (req, res) => {
+  var data = req.body;
+  let er = 0;
+  if (data.first_name == undefined || data.first_name.length == 0) {
+    er++;
+  }
+  if (data.last_name == undefined || data.last_name.length == 0) {
+    er++;
+  }
+  if (data.email == undefined || data.email.length == 0) {
+    er++;
+  }
+  // if (data.password == undefined || data.password.length == 0) {
+  //   er++;
+  // }
+  if (data.date_of_birth == undefined || data.date_of_birth.length == 0) {
+    er++;
+  }
+  if (data.telephone == undefined || data.telephone.length == 0) {
+    er++;
+  }
+  if (data.country == undefined || data.country.length == 0) {
+    er++;
+  }
+
+  if (er == 0) {
+    mUsers
+      .replaceUser(req.params.id, data)
+      .then(() => {
+        res.status(204).send();
+        console.log("User-req.params.id", req.params.id);
+        console.log(data);
+      })
+      .catch(err => {
+        res.status(500).send(err);
+      });
+  } else {
+    res.status(400).send("Replace - Bad request");
+  }
 };
 
 const renew = (req, res) => {
@@ -220,6 +276,8 @@ const changePassword = (req, res) => {
 module.exports = {
   register,
   login,
+  getOne,
+  replaceUser,
   renew,
   resetLink,
   resetPassword,

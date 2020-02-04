@@ -54,6 +54,29 @@ const getUserPasswordByEmail = email => {
   });
 };
 
+const getOne = (id /*userID*/) => {
+  return new Promise((success, fail) => {
+    User.find({ _id: id /*user_id: userID*/ }, (err, data) => {
+      if (err) {
+        return fail(err);
+      }
+      return success(data);
+    });
+  });
+};
+
+const replaceUser = (id, data) => {
+  return new Promise((success, fail) => {
+    User.findByIdAndUpdate(id, data, err => {
+      console.log(" User models - row 71", id);
+      if (err) {
+        return fail(err);
+      }
+      return success();
+    });
+  });
+};
+
 // const login = (email) => {
 //     return new Promise((success,fail) => {
 //         User.find({email: email}, (err,data) => {
@@ -80,5 +103,7 @@ const confirmUserAccount = hash => {
 module.exports = {
   createUser,
   getUserPasswordByEmail,
+  getOne,
+  replaceUser,
   confirmUserAccount
 };

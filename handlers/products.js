@@ -3,7 +3,8 @@ const mProducts = require("../models_/products");
 // ZA SEGA FINISHING 13-01-2020 Comment Bez users-auth //
 const getAll = (req, res) => {
   let q = { user_id: req.user.id };
-  console.log(req.query);
+  // console.log(req.query);
+  // console.log(q);
   // let q = {};
   let sort = {};
 
@@ -13,7 +14,7 @@ const getAll = (req, res) => {
     }
     q.purchaseDate.$gte = new Date(Number(req.query.purcdate_from));
   }
-  console.log(q.purchaseDate);
+  // console.log(q.purchaseDate);
 
   if (req.query.purcdate_to != undefined) {
     if (q.purchaseDate == undefined) {
@@ -28,14 +29,14 @@ const getAll = (req, res) => {
     // console.log(sq);
     if (sortable.indexOf(sq[0]) > -1) {
       sort[sq[0]] = sq[1] == "desc" ? -1 : 1;
-      console.log(sort);
+      // console.log(sort);
     }
   }
   mProducts
     .getAll(q, sort)
     .then(data => {
       res.status(200).send(data);
-      console.log(data);
+      // console.log(data);
     })
     .catch(err => {
       res.status(500).send(err);
@@ -48,7 +49,8 @@ const getOne = (req, res) => {
     .getOne(req.params.id, req.user.id)
     .then(data => {
       res.status(200).send(data);
-      // console.log(data)
+      console.log("Product handlers-row 52 - req.params.id", req.params.id);
+      console.log("Product handlers-row 53 - req.user.id", req.user.id);
     })
     .catch(err => {
       res.status(500).send(err);
