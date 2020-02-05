@@ -77,6 +77,17 @@ const replaceUser = (id, data) => {
   });
 };
 
+const remove = id => {
+  return new Promise((success, fail) => {
+    User.findByIdAndRemove(id, err => {
+      if (err) {
+        return fail(err);
+      }
+      return success();
+    });
+  });
+};
+
 // const login = (email) => {
 //     return new Promise((success,fail) => {
 //         User.find({email: email}, (err,data) => {
@@ -104,6 +115,7 @@ module.exports = {
   createUser,
   getUserPasswordByEmail,
   getOne,
+  remove,
   replaceUser,
   confirmUserAccount
 };

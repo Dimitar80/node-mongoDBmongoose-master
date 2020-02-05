@@ -90,11 +90,23 @@ const remove = id => {
   });
 };
 
+const removeMany = user_id => {
+  return new Promise((success, fail) => {
+    Product.deleteMany({ user_id: user_id }, err => {
+      if (err) {
+        return fail(err);
+      }
+      return success();
+    });
+  });
+};
+
 module.exports = {
   getAll,
   getOne,
   save,
   replace,
   update,
-  remove
+  remove,
+  removeMany
 };

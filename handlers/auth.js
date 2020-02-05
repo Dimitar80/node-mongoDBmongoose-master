@@ -256,6 +256,17 @@ const replaceUser = (req, res) => {
   }
 };
 
+const remove = (req, res) => {
+  mUsers
+    .remove(req.params.id)
+    .then(() => {
+      res.status(204).send();
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
+
 const renew = (req, res) => {
   return res.status(200).send(req.user);
   // return res.status(200).send('ok');
@@ -278,6 +289,7 @@ module.exports = {
   login,
   getOne,
   replaceUser,
+  remove,
   renew,
   resetLink,
   resetPassword,

@@ -155,11 +155,23 @@ const remove = (req, res) => {
     });
 };
 
+const removeMany = (req, res) => {
+  mProducts
+    .removeMany(req.params.id)
+    .then(() => {
+      res.status(204).send();
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
+
 module.exports = {
   getAll,
   getOne,
   save,
   replace,
   update,
-  remove
+  remove,
+  removeMany
 };

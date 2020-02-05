@@ -40,6 +40,7 @@ api.post("/api/v1/products/", products.save);
 api.put("/api/v1/products/:id", products.replace);
 api.patch("/api/v1/products/:id", products.update);
 api.delete("/api/v1/products/:id", products.remove);
+api.delete("/api/v1/products/user/:id", products.removeMany);
 
 api.listen(8082, err => {
   if (err) {

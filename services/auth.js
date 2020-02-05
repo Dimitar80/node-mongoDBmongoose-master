@@ -54,6 +54,7 @@ api.post("/api/v1/auth/confirm/:confirm_hash", auth.confirm);
 api.post("/api/v1/auth/login", auth.login);
 api.get("/api/v1/auth/:id", auth.getOne);
 api.put("/api/v1/auth/:id", auth.replaceUser);
+api.delete("/api/v1/auth/:id", auth.remove);
 
 api.get("/api/v1/auth/renew", auth.renew);
 api.post("/api/v1/auth/reset-link", auth.resetLink);
