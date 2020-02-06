@@ -256,7 +256,7 @@ const replaceUser = (req, res) => {
   }
 };
 
-const remove = (req, res) => {
+const removeUser = (req, res) => {
   mUsers
     .remove(req.params.id)
     .then(() => {
@@ -289,7 +289,7 @@ module.exports = {
   login,
   getOne,
   replaceUser,
-  remove,
+  removeUser,
   renew,
   resetLink,
   resetPassword,
