@@ -20,15 +20,8 @@ api.use(cors());
 //     next();
 // });
 
-//jwt tokens
-// var jwt = require('express-jwt');
-// app.use(                                                       //sekoj req ke pomine niz ova i ke vrati req.user
-//     jwt(
-//         { secret: config.getConfig('jwt').key }
-//     )
-// );
-
 api.use(
+  //sekoj req ke pomine niz ova i ke vrati req.user
   jwt({
     secret: config.getConfig("jwt").key
   })
