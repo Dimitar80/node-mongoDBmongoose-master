@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-//Models//
+//Models// --PROVERKA za data Types?
 const User = mongoose.model(
   "users",
   new mongoose.Schema(
